@@ -1,0 +1,53 @@
+
+
+<ion-content>
+  
+  <div class="container">
+
+  <br>
+  <p class="signin">Sign In</p>
+  <p class="hi">Hi there! Nice to see you again</p>
+  <form [formGroup]="loginForm">
+  <ion-label>Email</ion-label>
+  <ion-card class="ion-padding-horizontal">
+    <ion-item  >
+      
+      <ion-input type="email" formControlName="email" required="true"   [(ngModel)]="eaddres"></ion-input>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('email') && reactiveSubmitted" no-margin>{{errorMessages.email.email}}</ion-label>
+    
+    </ion-item>
+  </ion-card>
+  <ion-label>Password</ion-label>
+  <ion-card class="ion-padding-horizontal">
+    <ion-item >
+      <ion-button slot="end" fill="clear" (click)="toggleShowPassword()">
+        <ion-icon *ngIf="showEye" class="eyeoff" name="eye-off" slot="icon-only"></ion-icon>
+        <ion-icon *ngIf="!showEye" class="eye" name="eye" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-input *ngIf="showEye" type="password" formControlName="password" required="true"  [(ngModel)]="pass"></ion-input>
+    <ion-input *ngIf="!showEye" type="text" formControlName="password" required="true" [(ngModel)]="pass"></ion-input>
+    <ion-label error-field color="danger" *ngIf="loginForm.controls.password.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.password.required}}</ion-label>
+      
+    </ion-item>
+  </ion-card>
+  </form>
+
+  <ion-button  shape="block"  (click)="home()">
+    SIGN IN
+  </ion-button>
+  
+ </div>
+</ion-content>
+  
+  <ion-footer>
+    <ion-row>
+      <ion-col class="ion-text-end" >
+        <p class="forget">Forget Password?</p>
+      </ion-col>
+      <ion-col class="ion-text-start" (click)="register()">
+        <p class="signup">Sign Up</p>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+  
